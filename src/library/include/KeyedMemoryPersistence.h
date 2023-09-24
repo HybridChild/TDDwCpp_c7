@@ -36,14 +36,16 @@ public:
         // TODO need a Remove (that also does a delete on this object);
     }
 
-    std::auto_ptr<T> Get(const std::string& id) const
+    std::unique_ptr<T> Get(const std::string& id) const
     {
         std::map<std::string,Serializable*>::const_iterator it = mData.find(id);
+
         if (it == mData.end())
-            return std::auto_ptr<T>(NULL);
+            return std::make_unique<T>();
+
         T* existing = static_cast<T*>(it->second);
-        T* copy = existing->Clone();
-        return std::auto_ptr<T>(copy);
+        std::unique_ptr<T> copy(existing->Clone());
+        return copy;
     }
 
 

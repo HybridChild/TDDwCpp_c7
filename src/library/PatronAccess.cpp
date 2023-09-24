@@ -46,7 +46,7 @@ bool PatronAccess::Find(Patron& patron) const
 	return true;
 }
 
-struct PatronAccessFindByName: public binary_function<Patron, std::string, bool> 
+struct PatronAccessFindByName: public __binary_function<Patron, std::string, bool> 
 {
 	bool operator ()(Patron& patron, const string& name) const 
 	{

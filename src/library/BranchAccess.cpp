@@ -43,8 +43,8 @@ bool BranchAccess::ExistsWithName(const string& name) const
 
 bool BranchAccess::Find(Branch& branch) const
 {
-    auto_ptr<Branch> retrieved = mPersister->Get(branch.Id());
-    if (retrieved.get() == NULL)
+    std::unique_ptr<Branch> retrieved(mPersister->Get(branch.Id()));
+    if (!retrieved)
     {
         return false;
     }

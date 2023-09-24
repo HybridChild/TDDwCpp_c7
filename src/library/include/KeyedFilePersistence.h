@@ -32,9 +32,9 @@ public:
     { 
     }
 
-    std::auto_ptr<T> Get(const std::string& id) const
+    std::unique_ptr<T> Get(const std::string& id) const
     {
-        return std::auto_ptr<T>(NULL);
+        return std::make_unique<T>();
     }
 
     virtual bool Matches(MatcherFunction matches, const std::string& name) const
