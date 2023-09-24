@@ -19,8 +19,8 @@ Book::Book(
 		unsigned short type) 
 	: mTitle(title)
 	, mAuthor(author)
-	, mYear(year)
 	, mClassification(classification)
+	, mYear(year)
 	, mType(type)
 {
 }
