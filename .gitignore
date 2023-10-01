@@ -1,4 +1,3 @@
-build
-*.swp
-*.swo
-test.dat
+out/
+.vscode/
+.DS_Store/
