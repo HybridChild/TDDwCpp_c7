@@ -20,10 +20,10 @@ using namespace boost::gregorian;
 class ScannerStateCheckinTest : public Test, public TestScanner
 {
 public:
-    ScannerStateCheckin* state;
+    std::shared_ptr<ScannerStateCheckin> state;
 
     virtual void SetUp() {
-        state = new ScannerStateCheckin(scanner);
+        state = std::make_shared<ScannerStateCheckin>(scanner);
         scanner->SetCurrentState(state);
     }
 

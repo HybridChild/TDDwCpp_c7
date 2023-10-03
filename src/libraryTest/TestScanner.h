@@ -31,24 +31,18 @@ public:
 class TestScanner
 {
 public:
-    Scanner* scanner;
-    MockDisplayListener* display;
-    MockHoldingService* holdingService;
+    std::shared_ptr<Scanner> scanner;
+    std::unique_ptr<MockDisplayListener> display;
+    std::unique_ptr<MockHoldingService> holdingService;
 
     TestScanner() {
-        display = new MockDisplayListener;
-        holdingService = new MockHoldingService;
-        scanner = new Scanner(display, holdingService);
-    }
-
-    virtual ~TestScanner() {
-        delete scanner;
-        delete holdingService;
-        delete display;
+        display = std::make_unique<MockDisplayListener>();
+        holdingService = std::make_unique<MockHoldingService>();
+        scanner = std::make_shared<Scanner>(display, holdingService);
     }
 
     MockHoldingService* HoldingService()
     {
-         return dynamic_cast<MockHoldingService*>(scanner->HoldingService());
+        return dynamic_cast<MockHoldingService*>(scanner->HoldingService());
     }
 };

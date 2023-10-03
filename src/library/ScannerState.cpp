@@ -6,30 +6,30 @@ using namespace std;
 
 void ScannerState::ShowMessage(const string& message)
 {
-    mScanner->ShowMessage(message);
+    mScanner.lock()->ShowMessage(message);
 }
 
 string ScannerState::BranchId() const
 {
-    return mScanner->BranchId();
+    return mScanner.lock()->BranchId();
 }
 
 void ScannerState::SetBranchId(const string& id)
 {
-    mScanner->SetBranchId(id);
+    mScanner.lock()->SetBranchId(id);
 }
 
 string ScannerState::PatronId() const
 {
-    return mScanner->PatronId();
+    return mScanner.lock()->PatronId();
 }
 
 void ScannerState::SetPatronId(const string& id)
 {
-    mScanner->SetPatronId(id);
+    mScanner.lock()->SetPatronId(id);
 }
 
 service::HoldingService* ScannerState::HoldingService() const
 {
-    return mScanner->HoldingService();
+    return mScanner.lock()->HoldingService();
 }

@@ -7,7 +7,7 @@
 class DisplayListener;
 class ScannerState;
 
-class Scanner
+class Scanner : public std::enable_shared_from_this<Scanner>
 {
 public:
     const static std::string INVENTORY_CARD_NUMBER;
@@ -20,8 +20,8 @@ public:
 	void PressDone();
 
     void ShowMessage(const std::string& message);
-    ScannerState* CurrentState();
-    void SetCurrentState(ScannerState* state);
+    std::shared_ptr<ScannerState> CurrentState();
+    void SetCurrentState(std::shared_ptr<ScannerState> state);
 
     std::string BranchId();
     void SetBranchId(const std::string&);
@@ -32,8 +32,9 @@ public:
 
 private:
     DisplayListener* mDisplay;
-    ScannerState* mCurrentState;
-    service::HoldingService* mHoldingService;
     std::string mBranchId;
     std::string mPatronId;
+    std::shared_ptr<ScannerState> mCurrentState;
+    service::HoldingService* mHoldingService;
+
 };

@@ -11,7 +11,7 @@ class ScannerStateWaiting: public ScannerState
 public:
     const static std::string MSG_SCAN_BRANCH_ID_FIRST;
 
-    ScannerStateWaiting(Scanner*);
+    ScannerStateWaiting(std::shared_ptr<Scanner>);
     ~ScannerStateWaiting(void);
 
     void ScanHolding(const std::string&);
@@ -21,7 +21,7 @@ public:
     void PressDone();
 
 private:
-    Scanner* mScanner;
+    std::weak_ptr<Scanner> mScanner;
 
     void ShowInvalidOperationMessage();
 };

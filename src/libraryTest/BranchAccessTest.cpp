@@ -22,7 +22,7 @@ public:
     BranchAccess access2;
     BranchAccess* branchAccess;
 
-    shared_ptr<Persistence<Branch>> persister;
+    std::shared_ptr<Persistence<Branch>> persister;
 
     vector<Branch> noBranches;
     Branch* eastBranch;

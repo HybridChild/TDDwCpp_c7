@@ -8,7 +8,7 @@
 class ScannerState
 {
 public:
-    ScannerState(Scanner* scanner)
+    ScannerState(std::shared_ptr<Scanner> scanner)
         : mScanner(scanner)
     {
     }
@@ -34,11 +34,11 @@ protected:
     service::HoldingService* HoldingService() const;
 
 private:
-    Scanner* mScanner;
+    std::weak_ptr<Scanner> mScanner;
 };
 
 template <typename T>
 void ScannerState::SetState()
 {
-    mScanner->SetCurrentState(new T(mScanner));
+    //mScanner->SetCurrentState(std::make_shared<T>(mScanner));
 }

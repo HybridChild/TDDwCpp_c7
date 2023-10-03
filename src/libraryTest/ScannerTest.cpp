@@ -30,15 +30,15 @@ public:
 class ScannerTest : public Test, public TestScanner
 {
 public:
-    Scanner* scanner;
-    MockState* state;
-    MockDisplayListener* display;
+    std::shared_ptr<Scanner> scanner;
+    std::shared_ptr<MockState> state;
+    std::shared_ptr<MockDisplayListener> display;
 
     virtual void SetUp()
     {
-        display = new MockDisplayListener();
-        scanner = new Scanner(display, NULL);
-        state = new MockState();
+        display = std::make_shared<MockDisplayListener>();
+        scanner = std::make_shared<Scanner>(display, NULL);
+        state = std::make_shared<MockState>();
         scanner->SetCurrentState(state);
     }
 

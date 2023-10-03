@@ -8,7 +8,7 @@ using namespace std;
 
 const string ScannerStateWaiting::MSG_SCAN_BRANCH_ID_FIRST("Please scan a branch ID before continuing.");
 
-ScannerStateWaiting::ScannerStateWaiting(Scanner* scanner)
+ScannerStateWaiting::ScannerStateWaiting(std::shared_ptr<Scanner> scanner)
     : ScannerState(scanner)
 {
 }

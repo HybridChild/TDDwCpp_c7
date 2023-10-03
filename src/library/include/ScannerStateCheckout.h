@@ -5,11 +5,12 @@
 class Scanner;
 
 #include <string>
+#include <memory>
 
 class ScannerStateCheckout : public ScannerState
 {
 public:
-    ScannerStateCheckout(Scanner*);
+    ScannerStateCheckout(std::shared_ptr<Scanner>);
     ~ScannerStateCheckout(void);
 
     virtual void ScanHolding(const std::string& barcode);
@@ -23,5 +24,5 @@ public:
     static const std::string MSG_INVALID_HOLDING_ID;
     static const std::string MSG_ALREADY_CHECKED_OUT;
 private:
-    Scanner* mScanner;
+    std::shared_ptr<Scanner> mScanner;
 };

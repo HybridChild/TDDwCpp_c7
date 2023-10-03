@@ -13,7 +13,7 @@ const string ScannerStateCheckout::MSG_SCANNED_HOLDING("Checked out holding.");
 const string ScannerStateCheckout::MSG_INVALID_HOLDING_ID("Holding barcode not recognized.");
 const string ScannerStateCheckout::MSG_ALREADY_CHECKED_OUT("Holding already checked out.");
 
-ScannerStateCheckout::ScannerStateCheckout(Scanner* scanner)
+ScannerStateCheckout::ScannerStateCheckout(std::shared_ptr<Scanner> scanner)
     : ScannerState(scanner)
 {
 }

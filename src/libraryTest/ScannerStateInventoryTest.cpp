@@ -16,10 +16,10 @@ using namespace testing;
 class ScannerStateInventoryTest : public Test, public TestScanner
 {
 public:
-    ScannerStateInventory* state;
+    std::shared_ptr<ScannerStateInventory> state;
 
     virtual void SetUp() {
-        state = new ScannerStateInventory(scanner);
+        state = std::make_shared<ScannerStateInventory>(scanner);
         scanner->SetCurrentState(state);
     }
 

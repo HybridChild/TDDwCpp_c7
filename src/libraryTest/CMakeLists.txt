@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20.0)
 
 set(target_name "test")
 
-include_directories($ENV{GTEST_HOME}/googlemock/include $ENV{GTEST_HOME}/googletest/include $ENV{BOOST_ROOT}/include)
+include_directories($ENV{GTEST_HOME}/googlemock/include $ENV{GTEST_HOME}/googletest/include $ENV{BOOST_ROOT}/include ../library/include)
 link_directories($ENV{GTEST_HOME}/out/build/lib ../library/build)
 
 set(CMAKE_CXX_FLAGS "${CMAXE_CXX_FLAGS} -Wall")

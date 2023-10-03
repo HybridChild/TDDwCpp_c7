@@ -16,31 +16,24 @@ const string Scanner::MSG_INVALID_BARCODE("Barcode not recognized.");
 Scanner::Scanner(DisplayListener* display, service::HoldingService* holdingService)
     : mDisplay(display)
     , mBranchId("")
-    , mCurrentState(0)
     , mPatronId("")
+    , mCurrentState(0)
     , mHoldingService(holdingService)
 {
-    SetCurrentState(new ScannerStateWaiting(this));
+    SetCurrentState(std::make_shared<ScannerStateWaiting>(shared_from_this()));
+    //SetCurrentState(new ScannerStateWaiting(this));
 }
 
 Scanner::~Scanner()
 {
-    if (mCurrentState)
-    {
-        delete mCurrentState;
-    }
 }
 
-void Scanner::SetCurrentState(ScannerState* state)
+void Scanner::SetCurrentState(std::shared_ptr<ScannerState> state)
 {
-    if (mCurrentState)
-    {
-        delete mCurrentState;
-    }
     mCurrentState = state;
 }
 
-ScannerState* Scanner::CurrentState()
+std::shared_ptr<ScannerState> Scanner::CurrentState()
 {
     return mCurrentState;
 }

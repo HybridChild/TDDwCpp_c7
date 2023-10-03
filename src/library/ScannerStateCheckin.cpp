@@ -14,7 +14,7 @@ using namespace boost::gregorian;
 
 const string ScannerStateCheckin::MSG_WAITING_FOR_RETURNS("Waiting for returns");
 
-ScannerStateCheckin::ScannerStateCheckin(Scanner* scanner)
+ScannerStateCheckin::ScannerStateCheckin(std::shared_ptr<Scanner> scanner)
     : ScannerState(scanner)
 {
 }

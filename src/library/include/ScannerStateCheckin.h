@@ -8,7 +8,7 @@
 class ScannerStateCheckin: public ScannerState
 {
 public:
-    ScannerStateCheckin(Scanner*);
+    ScannerStateCheckin(std::shared_ptr<Scanner>);
     virtual ~ScannerStateCheckin(void);
 
     void PressDone();
@@ -20,5 +20,5 @@ public:
     static const std::string MSG_WAITING_FOR_RETURNS;
 
 private:
-    Scanner* mScanner;
+    std::shared_ptr<Scanner> mScanner;
 };

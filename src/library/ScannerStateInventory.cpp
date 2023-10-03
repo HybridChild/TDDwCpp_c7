@@ -12,7 +12,7 @@ const string ScannerStateInventory::MSG_COMPLETE_INVENTORY("Please complete inve
 const string ScannerStateInventory::MSG_BRANCH_CHANGED("Branch changed to ");
 const string ScannerStateInventory::MSG_HOLDING_ADDED("Added holding ");
 
-ScannerStateInventory::ScannerStateInventory(Scanner* scanner)
+ScannerStateInventory::ScannerStateInventory(std::shared_ptr<Scanner> scanner)
     : ScannerState(scanner)
 {
 }

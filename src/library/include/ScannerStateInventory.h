@@ -9,7 +9,7 @@ class Scanner;
 class ScannerStateInventory: public ScannerState
 {
 public:
-    ScannerStateInventory(Scanner*);
+    ScannerStateInventory(std::shared_ptr<Scanner>);
     ~ScannerStateInventory(void);
 
     void ScanHolding(const std::string&);
